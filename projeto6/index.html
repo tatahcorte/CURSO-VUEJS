@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" v-model="enteredGoalValue" />
+      <button @click="addGoal">Add Goal</button>
+      <!-- v-show é usado no lugar do v-if quando o estado do conteudo muda muitas vezes -->
+      <p v-if="goals.length == 0">
+        No goals have been added yet - please start adding some!
+      </p>
+      <ul v-else>
+        <li
+          v-for="(goal, index) in goals"
+          key="goal"
+          @click="removeGoal(index)"
+        >
+          {{ goal }} - {{ index }}
+          <input type="text" @click.stop>
+        </li>
+      </ul>
+      <!-- v-for tbm aceita Objetos
+      ex: v-for="value in {name: 'Tamires', 'Corte', age: 24}" 
+      outro ex: v-for="num in 10" - ira imprimir um loop e 1 a 10-->
+    </section>
+  </body>
+</html>
